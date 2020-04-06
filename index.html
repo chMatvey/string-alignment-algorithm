@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String alignment algorithm</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="page-content">
+    <div class="form-content row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_str" type="text" data-length="1000" value="PRETTY">
+                    <label for="first_str">First string</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="second_str" type="text" data-length="1000" value="PRTTEIN">
+                    <label for="second_str">Second string</label>
+                </div>
+            </div>
+            <div class="row right">
+                <button class="btn waves-effect waves-light" type="button" onclick="calculate()">
+                    Calculate
+                </button>
+            </div>
+            <div class="row result" id="result">
+                <div class="input-field col s12">
+                    <textarea id="result_text" class="materialize-textarea"></textarea>
+                    <label for="result_text">Result</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
