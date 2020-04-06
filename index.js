@@ -1,16 +1,12 @@
-const m = 1;
-const s = -1;
-const d = -1;
-
 function calculate() {
     const first = document.getElementById("first_str").value;
     const second = document.getElementById("second_str").value;
-    const lcs = LCS(first, second);
+    const result = LCS(first, second);
 
     document.getElementById("result").style.display = "block";
 
     const textArea = document.getElementById("result_text");
-    textArea.value = lcs.join("");
+    textArea.value = result.lcs.length + '\n' + result.first.join("") + '\n' + result.second.join("");
     M.textareaAutoResize(textArea);
     textArea.focus();
 }
@@ -47,7 +43,7 @@ function LCS(first, second) {
     let i = first.length;
     let j = second.length;
 
-    while (i > 0 && j > 0) {
+    while (i >= 1 && j >= 1) {
         if (first[i - 1] === second[j - 1]) {
             lcs.push(first[i - 1]);
             i--;
@@ -59,5 +55,53 @@ function LCS(first, second) {
         }
     }
 
-    return lcs.reverse();
+    const result = {
+        lcs: lcs.reverse(),
+        first: [],
+        second: []
+    };
+
+    let lcsIndex = 0;
+    i = 0;
+    j = 0;
+
+    while (i < first.length || j < second.length) {
+        if (lcsIndex === lcs.length) {
+            if (i < first.length && j < second.length) {
+                result.first.push(first[i]);
+                result.second.push(second[j]);
+                i++;
+                j++;
+            } else if (i < first.length) {
+                result.first.push(first[i]);
+                result.second.push('-');
+                i++;
+            } else {
+                result.first.push('-');
+                result.second.push(second[j]);
+                j++;
+            }
+        } else if (first[i] !== lcs[lcsIndex] && second[j] !== lcs[lcsIndex]) {
+            result.first.push(first[i]);
+            result.second.push(second[j]);
+            i++;
+            j++;
+        } else if (first[i] !== lcs[lcsIndex]) {
+            result.first.push(first[i]);
+            result.second.push('-');
+            i++;
+        } else if (second[j] !== lcs[lcsIndex]) {
+            result.second.push(second[j]);
+            result.first.push('-');
+            j++;
+        } else {
+            result.first.push(lcs[lcsIndex]);
+            result.second.push(lcs[lcsIndex]);
+            lcsIndex++;
+            i++;
+            j++;
+        }
+    }
+
+    return result;
 }
