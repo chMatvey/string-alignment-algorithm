@@ -66,31 +66,17 @@ function LCS(first, second) {
     j = 0;
 
     while (i < first.length || j < second.length) {
-        if (lcsIndex === lcs.length) {
-            if (i < first.length && j < second.length) {
-                result.first.push(first[i]);
-                result.second.push(second[j]);
-                i++;
-                j++;
-            } else if (i < first.length) {
-                result.first.push(first[i]);
-                result.second.push('-');
-                i++;
-            } else {
-                result.first.push('-');
-                result.second.push(second[j]);
-                j++;
-            }
-        } else if (first[i] !== lcs[lcsIndex] && second[j] !== lcs[lcsIndex]) {
+        if ((lcsIndex === lcs.length && i < first.length && j < second.length)
+            || (first[i] !== lcs[lcsIndex] && second[j] !== lcs[lcsIndex])) {
             result.first.push(first[i]);
             result.second.push(second[j]);
             i++;
             j++;
-        } else if (first[i] !== lcs[lcsIndex]) {
+        } else if ((lcsIndex === lcs.length && i < first.length) || first[i] !== lcs[lcsIndex]) {
             result.first.push(first[i]);
             result.second.push('-');
             i++;
-        } else if (second[j] !== lcs[lcsIndex]) {
+        } else if (lcsIndex === lcs.length || second[j] !== lcs[lcsIndex]) {
             result.second.push(second[j]);
             result.first.push('-');
             j++;
