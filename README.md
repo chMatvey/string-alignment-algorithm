@@ -1,8 +1,8 @@
 # string-alignment-algorithm
 
-####To build
+#### To build
 
     npm run-script build
     
-####Open index.html
+#### Open index.html
  
