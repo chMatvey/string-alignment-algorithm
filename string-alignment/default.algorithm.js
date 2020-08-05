@@ -32,11 +32,11 @@ function defaultAlgorithm(str1, str2) {
                 }
             ]
 
-            const score = scores.reduce(
+            const maxScore = scores.reduce(
                 (max, score) => score.score > max.score ? score : max
             )
 
-            tracebackMatrix[i][j] = score.direction
+            tracebackMatrix[i][j] = maxScore.direction
         }
     }
 

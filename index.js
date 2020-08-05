@@ -1,5 +1,4 @@
 const {DefaultAligner} = require("./string-alignment");
-
 const M = require('materialize-css/dist/js/materialize.min.js');
 
 const aligner = DefaultAligner();

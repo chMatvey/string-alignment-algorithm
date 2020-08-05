@@ -31,17 +31,18 @@ const alignmentUpdaters = gapSymbol => direction => {
         [Directions.LEFT]: ({str2, col}) => [gapSymbol, str2[col - 1]],
         [Directions.TOP]: ({str1, row}) => [str1[row - 1], gapSymbol],
     }
+
     return updaters[direction]
 }
 
 const coordinateUpdaters = direction => {
-    const getters = {
+    const updaters = {
         [Directions.DIAGONAL]: ([row, col]) => [row - 1, col - 1],
         [Directions.LEFT]: ([row, col]) => [row, col - 1],
         [Directions.TOP]: ([row, col]) => [row - 1, col],
     }
 
-    return getters[direction]
+    return updaters[direction]
 }
 
 module.exports = {
