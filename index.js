@@ -1,18 +1,19 @@
-// function calculate() {
-//     const first = document.getElementById("first_str").value;
-//     const second = document.getElementById("second_str").value;
-//     const result = LCS(first, second);
-//
-//     document.getElementById("result").style.display = "block";
-//
-//     const textArea = document.getElementById("result_text");
-//     textArea.value = result.lcs.length + '\n' + result.first.join("") + '\n' + result.second.join("");
-//     M.textareaAutoResize(textArea);
-//     textArea.focus();
-// }
+const {DefaultAligner} = require("./string-alignment");
 
-const {defaultAligner} = require("./string-alignment");
+const M = require('materialize-css/dist/js/materialize.min.js');
 
-const result = defaultAligner.align('PRETTY', 'PRTTEIN')
+const aligner = DefaultAligner();
 
-console.log(result)
+document.getElementById("calculate-btn").onclick = () => {
+    const first = document.getElementById("first_str").value;
+    const second = document.getElementById("second_str").value;
+
+    const result = aligner.align(first, second);
+
+    document.getElementById("result").style.display = "block";
+
+    const textArea = document.getElementById("result_text");
+    textArea.value = result.alignment;
+    M.textareaAutoResize(textArea);
+    textArea.focus();
+}

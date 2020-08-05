@@ -1,8 +1,8 @@
 const {defaultAlgorithm} = require("./default.algorithm");
 const {AlignerFactory} = require("./aligner.factory");
 
-const defaultAligner = AlignerFactory({algorithm: defaultAlgorithm, gapSymbol: '-'})
+const DefaultAligner = AlignerFactory({algorithm: defaultAlgorithm, gapSymbolDefault: '-'})
 
 module.exports = {
-    defaultAligner: defaultAligner
+    DefaultAligner: DefaultAligner
 }
